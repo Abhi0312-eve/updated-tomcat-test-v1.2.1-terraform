@@ -1,0 +1,22 @@
+resource "aws_instance" "ec2" {
+  ami           = var.operatingSystem
+  instance_type = var.instanceType
+  iam_instance_profile = "BackstageEC2SSMInstanceProfile"
+
+  root_block_device {
+    volume_size = var.storageSize
+  }
+
+  tags = {
+    Name  = var.instanceName
+    Owner = var.owner
+    ManagedBy = "Backstage"
+    Platform  = "IDP"
+  }
+}
+
+# AWS EC2 module baseline - v1.0.1-test
+
+# AWS EC2 module release test v1.0.2
+
+# Release test marker
